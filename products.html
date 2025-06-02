@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - GEG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
+</head>
+<body>
+    <!-- Кнопка для слабовидящих -->
+    <div class="accessibility-btn" id="accessibilityBtn">
+        <i class="fas fa-eye"></i>
+    </div>
+    
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="site-title">GEG</h1>
+            </div>
+            
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск товаров..." id="searchInput">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <a href="#"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="products.html">Товары</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Товары с фильтрами -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title animate-slidein">Каталог товаров</h2>
+            
+            <div class="products-container">
+                <!-- Фильтры -->
+                <aside class="products-filters animate-slidein-left">
+                    <div class="filter-group">
+                        <h3>Категории</h3>
+                        <ul class="category-list">
+                            <li><a href="#" data-category="all" class="active">Все товары</a></li>
+                            <li><a href="#" data-category="keyboards">Клавиатуры</a></li>
+                            <li><a href="#" data-category="mice">Мыши</a></li>
+                            <li><a href="#" data-category="headsets">Гарнитуры</a></li>
+                            <li><a href="#" data-category="controllers">Контроллеры</a></li>
+                            <li><a href="#" data-category="mousepads">Коврики для мыши</a></li>
+                            <li><a href="#" data-category="accessories">Аксессуары</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Цена, ₽</h3>
+                        <div id="price-slider"></div>
+                        <div class="price-inputs">
+                            <input type="number" id="min-price" placeholder="От">
+                            <input type="number" id="max-price" placeholder="До">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Бренды</h3>
+                        <div class="brand-checkboxes">
+                            <label><input type="checkbox" name="brand" value="razer" checked> Razer</label>
+                            <label><input type="checkbox" name="brand" value="logitech" checked> Logitech</label>
+                            <label><input type="checkbox" name="brand" value="steelseries" checked> SteelSeries</label>
+                            <label><input type="checkbox" name="brand" value="hyperx" checked> HyperX</label>
+                            <label><input type="checkbox" name="brand" value="corsair" checked> Corsair</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Тип подключения</h3>
+                        <div class="connection-checkboxes">
+                            <label><input type="checkbox" name="connection" value="wired" checked> Проводные</label>
+                            <label><input type="checkbox" name="connection" value="wireless" checked> Беспроводные</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h3>Рейтинг</h3>
+                        <div class="rating-stars">
+                            <label><input type="checkbox" name="rating" value="5"> ★★★★★</label>
+                            <label><input type="checkbox" name="rating" value="4"> ★★★★☆ и выше</label>
+                            <label><input type="checkbox" name="rating" value="3"> ★★★☆☆ и выше</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="applyFilters">Применить фильтры</button>
+                    <button class="btn btn-secondary" id="resetFilters">Сбросить</button>
+                </aside>
+                
+                <!-- Список товаров -->
+                <div class="products-list animate-slidein-right">
+                    <div class="products-sorting">
+                        <span>Сортировка:</span>
+                        <select id="sortSelect">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">По возрастанию цены</option>
+                            <option value="price-desc">По убыванию цены</option>
+                            <option value="rating-desc">По рейтингу</option>
+                            <option value="name-asc">По названию (А-Я)</option>
+                            <option value="name-desc">По названию (Я-А)</option>
+                        </select>
+                        <span class="products-count">Найдено: <span id="productsCount">0</span> товаров</span>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Товары будут загружены через JS -->
+                    </div>
+                    
+                    <div class="pagination">
+                        <button class="btn btn-secondary" id="prevPage"><i class="fas fa-chevron-left"></i></button>
+                        <span class="page-info">Страница <span id="currentPage">1</span> из <span id="totalPages">1</span></span>
+                        <button class="btn btn-secondary" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="products.html">Товары</a></li>
+                        <li><a href="reviews.html">Отзывы</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кунигами, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@gametech.ru</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Модальное окно корзины -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-header">
+            <h3>Ваша корзина</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Товары будут добавляться сюда -->
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
+    <script src="script.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>

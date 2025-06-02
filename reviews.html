@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы - GEG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Кнопка для слабовидящих -->
+    <div class="accessibility-btn" id="accessibilityBtn">
+        <i class="fas fa-eye"></i>
+    </div>
+    
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="site-title">GEG</h1>
+            </div>
+            
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск товаров...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <a href="#"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="products.html">Товары</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Отзывы -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title animate-slidein">Отзывы наших клиентов</h2>
+            
+            <div class="reviews-container">
+                <!-- Форма добавления отзыва -->
+                <div class="add-review animate-slidein-left">
+                    <h3>Оставьте ваш отзыв</h3>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <label for="reviewName">Ваше имя</label>
+                            <input type="text" id="reviewName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewEmail">Email</label>
+                            <input type="email" id="reviewEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewRating">Оценка</label>
+                            <div class="rating-stars">
+                                <i class="far fa-star" data-rating="1"></i>
+                                <i class="far fa-star" data-rating="2"></i>
+                                <i class="far fa-star" data-rating="3"></i>
+                                <i class="far fa-star" data-rating="4"></i>
+                                <i class="far fa-star" data-rating="5"></i>
+                            </div>
+                            <input type="hidden" id="reviewRating" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Отзыв</label>
+                            <textarea id="reviewText" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+                    </form>
+                </div>
+                
+                <!-- Список отзывов -->
+                <div class="reviews-list animate-slidein-right">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Алексей Иванов</div>
+                            <div class="review-date">15.05.2023</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Отличный магазин! Заказал клавиатуру Razer, доставили быстро, упаковка целая. Пользуюсь уже месяц - никаких нареканий. Персонал вежливый, помогли с выбором. Обязательно вернусь снова!
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Мария Петрова</div>
+                            <div class="review-date">10.05.2023</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Купила игровую мышь Logitech. Качество на высоте, но доставка немного задержалась. В целом впечатления положительные, цены адекватные. Рекомендую этот магазин.
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Дмитрий Смирнов</div>
+                            <div class="review-date">03.05.2023</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Хороший ассортимент игровых гарнитур. Выбрал HyperX Cloud II - звук отличный, удобно сидит на голове. Консультант помог подобрать оптимальный вариант по характеристикам и цене. Минус - мало беспроводных моделей в наличии.
+                        </div>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author">Анна Козлова</div>
+                            <div class="review-date">25.04.2023</div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Лучший магазин игровой периферии! Покупаю здесь уже третий год, всегда качественный товар и хороший сервис. Особенно радует система бонусов для постоянных клиентов. Спасибо за работу!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Статистика отзывов -->
+            <div class="reviews-stats animate-slidein">
+                <h3>Общая оценка: <span class="total-rating">4.8</span>/5</h3>
+                <div class="rating-bars">
+                    <div class="rating-bar">
+                        <span>5 звезд</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 75%"></div>
+                        </div>
+                        <span>75%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>4 звезды</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 20%"></div>
+                        </div>
+                        <span>20%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>3 звезды</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 5%"></div>
+                        </div>
+                        <span>5%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>2 звезды</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 0%"></div>
+                        </div>
+                        <span>0%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>1 звезда</span>
+                        <div class="bar-container">
+                            <div class="bar" style="width: 0%"></div>
+                        </div>
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="products.html">Товары</a></li>
+                        <li><a href="reviews.html">Отзывы</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кунигами, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@gametech.ru</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-header">
+            <h3>Ваша корзина</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Товары будут добавляться сюда -->
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+    <script src="reviews.js"></script>
+</body>
+</html>

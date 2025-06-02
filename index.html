@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEG - Магазин игровой периферии</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Кнопка для слабовидящих -->
+    <div class="accessibility-btn" id="accessibilityBtn">
+        <i class="fas fa-eye"></i>
+    </div>
+    
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="site-title">GEG</h1>
+            </div>
+            
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск товаров...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <a href="#"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="products.html">Товары</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fadein">
+                <h2>Лучшая игровая периферия</h2>
+                <p>Мы предлагаем только качественные товары от проверенных производителей</p>
+                <a href="products.html" class="btn btn-primary animate-bounce">В каталог</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные категории -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Популярные категории</h2>
+            <div class="category-grid">
+                <div class="category-card animate-card">
+                    <img src="img/klava.jpg" alt="Клавиатуры">
+                    <h3>Клавиатуры</h3>
+                    <a href="products.html?category=keyboards" class="btn btn-secondary">Смотреть</a>
+                </div>
+                <div class="category-card animate-card">
+                    <img src="img/mish.jpg" alt="Мыши">
+                    <h3>Мыши</h3>
+                    <a href="products.html?category=mice" class="btn btn-secondary">Смотреть</a>
+                </div>
+                <div class="category-card animate-card">
+                    <img src="img/ushi.jpg" alt="Гарнитуры">
+                    <h3>Гарнитуры</h3>
+                    <a href="products.html?category=headsets" class="btn btn-secondary">Смотреть</a>
+                </div>
+                <div class="category-card animate-card">
+                    <img src="img/gay.jpg" alt="Контроллеры">
+                    <h3>Контроллеры</h3>
+                    <a href="products.html?category=controllers" class="btn btn-secondary">Смотреть</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные товары -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Хиты продаж</h2>
+            <div class="product-grid">
+                <!-- Товары будут загружаться через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании (кратко) -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate-slidein-left">
+                    <h2>О компании GEG</h2>
+                    <p>Мы - ведущий поставщик игровой периферии в России с 2010 года. Наша миссия - предоставлять геймерам лучшее оборудование для максимального погружения в игровой процесс.</p>
+                    <a href="about.html" class="btn btn-primary">Подробнее</a>
+                </div>
+                <div class="about-image animate-slidein-right">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="products.html">Товары</a></li>
+                        <li><a href="reviews.html">Отзывы</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кунигами, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@geg.ru</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-content">
+        <div class="cart-header">
+            <h3>Ваша корзина</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Товары будут добавляться сюда -->
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
