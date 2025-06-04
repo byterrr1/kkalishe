@@ -47,7 +47,12 @@ body {
     margin: 0 auto;
     padding: 0 15px;
 }
-
+.container2 {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 46px;
+    padding: 0 15px;
+}
 a {
     text-decoration: none;
     color: inherit;
@@ -908,8 +913,16 @@ ul {
     font-size: 20px;
     color: var(--warning-color);
     cursor: pointer;
+    flex-direction: row;
 }
-
+.rating-stars2 {
+    display: flex;
+    gap: 5px;
+    font-size: 20px;
+    color: var(--warning-color);
+    cursor: pointer;
+    flex-direction: column
+}
 .reviews-list {
     flex-grow: 1;
     display: flex;
@@ -1343,4 +1356,301 @@ ul {
         height: auto;
         max-height: 150px;
     }
+}
+/* Стили модального окна корзины */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
+    overflow-y: auto;
+}
+
+.cart-modal-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    animation: slideInRight 0.3s forwards;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.close-cart {
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.close-cart:hover {
+    transform: rotate(90deg);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 40px 0;
+    color: #666;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f5f5f5;
+    gap: 15px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 5px;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+.cart-summary {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+/* Адаптивность */
+@media (max-width: 576px) {
+    .cart-modal-content {
+        max-width: 100%;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+    }
+    
+    .cart-item-img {
+        width: 100%;
+        height: auto;
+        max-height: 150px;
+    }
+}
+/* Стиль для секретного товара */
+.product-card.secret-item {
+    position: relative;
+    border: 2px solid gold;
+}
+
+.product-card.secret-item::after {
+    content: 'ЭКСКЛЮЗИВ';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: gold;
+    color: #000;
+    padding: 3px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 12px;
+    max-width: 80%; /* или любое значение, чтобы изображение было меньше квадрата */
+    max-height: 80%;
+    height: auto;
+    width: auto;
+}
+.secret-item {
+    position: relative;
+    border: 2px solid gold;
+}
+.secret-item::after {
+    content: 'ЭКСКЛЮЗИВ';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: gold;
+    color: #000;
+    padding: 3px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 12px;
+    max-width: 80%; /* или любое значение, чтобы изображение было меньше квадрата */
+    max-height: 80%;
+    height: auto;
+    width: auto;
+}
+/* Стили формы заказа (для всех страниц) */
+.order-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3000;
+    overflow-y: auto;
+}
+
+.order-modal-content {
+    position: relative;
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    animation: modalFadeIn 0.3s;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.order-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Стили модалки товара (ТОЛЬКО для products.html) */
+.product-modal {
+    display: none;
+    /* ... (остальные стили из предыдущего ответа) ... */
 }
