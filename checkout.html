@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа - GEG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="site-title">GEG</h1>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="products.html">Товары</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="container">
+            <h2>Оформление заказа</h2>
+            
+            <div class="checkout-container">
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="form-section">
+                        <h3>Контактные данные</h3>
+                        <div class="form-group">
+                            <label for="fullName">ФИО*</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон*</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Доставка</h3>
+                        <div class="form-group">
+                            <label for="address">Адрес доставки</label>
+                            <textarea id="address" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Комментарий к заказу</label>
+                            <textarea id="comment" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Ваш заказ</h3>
+                        <div class="order-items" id="orderItems">
+                            <!-- Товары будут добавлены через JS -->
+                        </div>
+                        <div class="order-total">
+                            <span>Итого:</span>
+                            <span id="orderTotal">0 ₽</span>
+                        </div>
+                    </div>
+
+                    <div class="form-footer">
+                        <p>Нажимая "Подтвердить заказ", вы соглашаетесь с 
+                           <a href="privacy.html" target="_blank">политикой конфиденциальности</a></p>
+                        <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container2">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="products.html">Товары</a></li>
+                        <li><a href="reviews.html">Отзывы</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кунигами, 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@geg.ru</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-vk"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-telegram"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-youtube"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

@@ -1654,3 +1654,177 @@ ul {
     display: none;
     /* ... (остальные стили из предыдущего ответа) ... */
 }
+/* Страница оформления заказа */
+.checkout-page {
+    padding: 40px 0;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-section {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.order-total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Страница политики */
+.privacy-page {
+    padding: 40px 0;
+    line-height: 1.6;
+}
+
+.privacy-content section {
+    margin-bottom: 30px;
+}
+
+.privacy-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+/* Модальное окно картины */
+.art-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 3000;
+    overflow-y: auto;
+}
+
+.art-modal-content {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+    animation: artModalFadeIn 0.3s;
+}
+
+@keyframes artModalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-art-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.art-modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#artModalImage {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.art-modal-info {
+    background: white;
+    padding: 25px;
+    border-radius: 0 0 8px 8px;
+}
+
+.art-modal-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.art-modal-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .art-modal-content {
+        width: 95%;
+        margin: 20px auto;
+    }
+    
+    .art-modal-body {
+        flex-direction: column;
+    }
+    
+    #artModalImage {
+        max-height: 50vh;
+    }
+}
+/* Стили для секретных товаров */
+.product-card.secret-item {
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.product-card.secret-item:hover {
+    transform: translateY(-5px);
+}
+
+.product-card.secret-item::after {
+    content: 'ЭКСКЛЮЗИВ';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: gold;
+    color: #000;
+    padding: 3px 10px;
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 2;
+}

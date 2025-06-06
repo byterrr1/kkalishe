@@ -262,3 +262,17 @@ function initScrollAnimations() {
     window.addEventListener('scroll', checkScroll);
     checkScroll();
 }
+// Замените старый код оформления заказа на:
+document.querySelector('.checkout-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Проверяем, есть ли товары в корзине
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert('Ваша корзина пуста');
+        return;
+    }
+    
+    // Перенаправляем на страницу оформления
+    window.location.href = 'checkout.html';
+});

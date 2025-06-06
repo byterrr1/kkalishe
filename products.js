@@ -425,6 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function displayProducts() {
         const productsGrid = document.getElementById('productsGrid');
+        productsGrid.innerHTML = '';
         if (!productsGrid) return;
         
         productsGrid.innerHTML = '';
@@ -439,7 +440,6 @@ document.addEventListener('DOMContentLoaded', function() {
             paginatedProducts.forEach(product => {
                 const stars = '★'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
                 const isSecret = product.category === 'secret';
-                
                 const productCard = document.createElement('div');
                 productCard.className = `product-card ${isSecret ? 'secret-item' : ''}`;
                 productCard.innerHTML = `
@@ -454,9 +454,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         <button class="add-to-cart" data-id="${product.id}">В корзину</button>
                     </div>
                 `;
+                            // Добавляем обработчик клика для секретных товаров
+        if (isSecret) {
+            productCard.addEventListener('click', function(e) {
+                // Открываем модальное окно только если клик не по кнопке "В корзину"
+                if (!e.target.closest('.add-to-cart')) {
+                    openArtModal(product);
+                }
+            });
+            
+            // Добавляем курсор-указатель для секретных товаров
+            productCard.style.cursor = 'pointer';
+        }
                 productsGrid.appendChild(productCard);
             });
         }
+        
         
         if (document.getElementById('productsCount')) {
             document.getElementById('productsCount').textContent = filteredProducts.length;
@@ -493,4 +506,122 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Инициализация
     applyFilters();
+});
+// Замените старый код оформления заказа на:
+document.querySelector('.checkout-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Проверяем, есть ли товары в корзине
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert('Ваша корзина пуста');
+        return;
+    }
+    
+    // Перенаправляем на страницу оформления
+    window.location.href = 'checkout.html';
+});
+// Показ модального окна для картины
+document.addEventListener('click', function(e) {
+    const card = e.target.closest('.product-card.secret-item');
+    if (card) {
+        e.preventDefault();
+        const productId = card.querySelector('.add-to-cart').getAttribute('data-id');
+        const product = products.find(p => p.id == productId);
+        if (product) openArtModal(product);
+    }
+});
+
+// Открытие модального окна
+function openArtModal(product) {
+    const modal = document.getElementById('artModal');
+    document.getElementById('artModalImage').src = product.image;
+    document.getElementById('artModalTitle').textContent = product.name;
+    document.getElementById('artModalPrice').textContent = product.price.toLocaleString() + ' ₽';
+    document.getElementById('artModalDescription').textContent = product.description;
+    
+    // Обновляем ID товара для кнопки добавления
+    document.getElementById('addToCartFromModal').setAttribute('data-id', product.id);
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Закрытие модального окна
+function closeArtModal() {
+    document.getElementById('artModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Обработчики закрытия
+document.querySelector('.close-art-modal').addEventListener('click', closeArtModal);
+document.getElementById('artModal').addEventListener('click', function(e) {
+    if (e.target === this) closeArtModal();
+});
+
+// Добавление в корзину из модального окна
+document.getElementById('addToCartFromModal').addEventListener('click', function() {
+    const productId = this.getAttribute('data-id');
+    const product = products.find(p => p.id == productId);
+    if (product) {
+        addToCart(product);
+        this.textContent = 'Добавлено!';
+        this.style.backgroundColor = 'var(--success-color)';
+        setTimeout(() => {
+            closeArtModal();
+        }, 1000);
+    }
+});
+function openArtModal(product) {
+    const modal = document.getElementById('artModal');
+    const modalImg = document.getElementById('artModalImage');
+    const modalTitle = document.getElementById('artModalTitle');
+    const modalPrice = document.getElementById('artModalPrice');
+    const modalDesc = document.getElementById('artModalDescription');
+    const addToCartBtn = document.getElementById('addToCartFromModal');
+    
+    modalImg.src = product.image;
+    modalImg.alt = product.name;
+    modalTitle.textContent = product.name;
+    modalPrice.textContent = `${product.price.toLocaleString()} ₽`;
+    modalDesc.textContent = product.description;
+    
+    // Обновляем data-id для кнопки добавления
+    addToCartBtn.setAttribute('data-id', product.id);
+    addToCartBtn.textContent = 'В корзину';
+    addToCartBtn.style.backgroundColor = 'var(--primary-color)';
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+// Закрытие модального окна
+function closeArtModal() {
+    document.getElementById('artModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Клик по крестику
+document.querySelector('.close-art-modal').addEventListener('click', closeArtModal);
+
+// Клик вне изображения
+document.getElementById('artModal').addEventListener('click', function(e) {
+    if (e.target === this) closeArtModal();
+});
+
+// Добавление в корзину из модального окна
+document.getElementById('addToCartFromModal').addEventListener('click', function() {
+    const productId = this.getAttribute('data-id');
+    const product = products.find(p => p.id == productId);
+    
+    if (product) {
+        addToCart(product); // Ваша существующая функция добавления в корзину
+        
+        // Меняем вид кнопки на короткое время
+        this.textContent = 'Добавлено!';
+        this.style.backgroundColor = 'var(--success-color)';
+        
+        setTimeout(() => {
+            closeArtModal();
+        }, 1000);
+    }
 });
