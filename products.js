@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
             brand: 'art',
             connection: 'none',
             rating: 5,
-            image: 'img/imba.png',
+            image: 'img/imba.PNG',
             description: 'Эксклюзивная картина ручной работы для истинных ценителей игрового искусства'
         }
     ];
