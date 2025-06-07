@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             connection: 'none',
             rating: 5,
             image: 'img/imba.PNG',
-            description: 'Эксклюзивная картина ручной работы для истинных ценителей игрового искусства'
+            description: 'Эксклюзивная картина ручной работы'
         }
     ];
 
