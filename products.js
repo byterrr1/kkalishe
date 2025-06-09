@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Игровые наушники с микрофонной технологией BLUE VO!'
         },
         {
-            id: 3,
+            id: 13,
             name: 'SteelSeries Apex Pro',
             price: 14990,
             category: 'keyboards',
@@ -160,8 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Расширенный игровой коврик для мыши'
         },
         {
-            id: 13,
-            name: 'Авторская картина',
+            id: 3,
+            name: 'Авторская картина художника Leucad8',
             price: 250000,
             category: 'secret',
             brand: 'art',
