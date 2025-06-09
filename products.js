@@ -62,15 +62,15 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Игровые наушники с микрофонной технологией BLUE VO!'
         },
         {
-            id: 13,
-            name: 'SteelSeries Apex Pro',
-            price: 14990,
-            category: 'keyboards',
-            brand: 'steelseries',
-            connection: 'wired',
-            rating: 4.9,
-            image: 'img/steel.jpeg',
-            description: 'Клавиатура с регулируемым ходом переключателей'
+            id: 3,
+            name: 'Авторская картина художника Leucad8',
+            price: 250000,
+            category: 'secret',
+            brand: 'art',
+            connection: 'none',
+            rating: 5,
+            image: 'img/imba.PNG',
+            description: 'Эксклюзивная картина ручной работы'
         },
         {
             id: 4,
@@ -159,16 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
             image: 'img/covyor.jpg',
             description: 'Расширенный игровой коврик для мыши'
         },
-        {
-            id: 3,
-            name: 'Авторская картина художника Leucad8',
-            price: 250000,
-            category: 'secret',
-            brand: 'art',
-            connection: 'none',
-            rating: 5,
-            image: 'img/imba.PNG',
-            description: 'Эксклюзивная картина ручной работы'
+         {
+            id: 13,
+            name: 'SteelSeries Apex Pro',
+            price: 14990,
+            category: 'keyboards',
+            brand: 'steelseries',
+            connection: 'wired',
+            rating: 4.9,
+            image: 'img/steel.jpeg',
+            description: 'Клавиатура с регулируемым ходом переключателей'
         }
     ];
 
