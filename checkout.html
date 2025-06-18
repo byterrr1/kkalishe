@@ -8,72 +8,247 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Кнопка для слабовидящих -->
+    <div class="accessibility-btn" id="accessibilityBtn">
+        <i class="fas fa-eye"></i>
+    </div>
+    
+    <!-- Шапка сайта -->
     <header class="header">
         <div class="container">
             <div class="logo-container">
                 <h1 class="site-title">GEG</h1>
             </div>
             
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск товаров..." id="searchInput">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <a href="products.html"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+                <div class="user-account">
+                    <a href="account.html" class="account-link">
+                        <i class="fas fa-user"></i> Личный кабинет
+                    </a>
+                </div>
+            </div>
+            
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
                     <li><a href="products.html">Товары</a></li>
+                    <li><a href="promotions.html">Акции</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
                 </ul>
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
             </nav>
         </div>
     </header>
 
     <main class="checkout-page">
         <div class="container">
-            <h2>Оформление заказа</h2>
+            <div class="checkout-header">
+                <h2 class="section-title">Оформление заказа</h2>
+                <div class="checkout-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Данные</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Доставка</span>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Оплата</span>
+                    </div>
+                </div>
+            </div>
             
             <div class="checkout-container">
-                <form class="checkout-form" id="checkoutForm">
-                    <div class="form-section">
-                        <h3>Контактные данные</h3>
-                        <div class="form-group">
-                            <label for="fullName">ФИО*</label>
-                            <input type="text" id="fullName" required>
+                <div class="checkout-form-container">
+                    <form class="checkout-form" id="checkoutForm">
+                        <!-- Шаг 1: Контактные данные -->
+                        <div class="form-step active" id="step1">
+                            <h3>Контактные данные</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName">ФИО*</label>
+                                    <input type="text" id="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Телефон*</label>
+                                    <input type="tel" id="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Адрес доставки*</label>
+                                <textarea id="address" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Комментарий к заказу</label>
+                                <textarea id="comment" rows="3" placeholder="Дополнительная информация о заказе"></textarea>
+                            </div>
+                            <div class="step-buttons">
+                                <button type="button" class="btn btn-primary next-step" data-step="2">Продолжить</button>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон*</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email*</label>
-                            <input type="email" id="email" required>
-                        </div>
-                    </div>
 
-                    <div class="form-section">
-                        <h3>Доставка</h3>
-                        <div class="form-group">
-                            <label for="address">Адрес доставки</label>
-                            <textarea id="address" rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Комментарий к заказу</label>
-                            <textarea id="comment" rows="3"></textarea>
-                        </div>
-                    </div>
+                        <!-- Шаг 2: Способ доставки -->
+                        <div class="form-step" id="step2">
+                            <h3>Способ доставки</h3>
+                            <div class="delivery-options">
+                                <div class="delivery-option">
+                                    <input type="radio" id="delivery1" name="delivery" value="courier" checked>
+                                    <label for="delivery1">
+                                        <div class="delivery-info">
+                                            <div class="delivery-header">
+                                                <i class="fas fa-truck"></i>
+                                                <span class="delivery-title">Курьерская доставка</span>
+                                                <span class="delivery-price">300 ₽</span>
+                                            </div>
+                                            <div class="delivery-details">
+                                                <span class="delivery-time">1-2 дня</span>
+                                                <span class="delivery-description">Доставка до двери в удобное время</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
 
-                    <div class="form-section">
+                                <div class="delivery-option">
+                                    <input type="radio" id="delivery2" name="delivery" value="pickup">
+                                    <label for="delivery2">
+                                        <div class="delivery-info">
+                                            <div class="delivery-header">
+                                                <i class="fas fa-store"></i>
+                                                <span class="delivery-title">Самовывоз</span>
+                                                <span class="delivery-price">0 ₽</span>
+                                            </div>
+                                            <div class="delivery-details">
+                                                <span class="delivery-time">В день заказа</span>
+                                                <span class="delivery-description">Москва, Кремль, Красная площадь, 1</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="delivery-option">
+                                    <input type="radio" id="delivery3" name="delivery" value="post">
+                                    <label for="delivery3">
+                                        <div class="delivery-info">
+                                            <div class="delivery-header">
+                                                <i class="fas fa-shipping-fast"></i>
+                                                <span class="delivery-title">Почта России</span>
+                                                <span class="delivery-price">200 ₽</span>
+                                            </div>
+                                            <div class="delivery-details">
+                                                <span class="delivery-time">3-7 дней</span>
+                                                <span class="delivery-description">Доставка в отделение почты</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="step-buttons">
+                                <button type="button" class="btn btn-secondary prev-step" data-step="1">Назад</button>
+                                <button type="button" class="btn btn-primary next-step" data-step="3">Продолжить</button>
+                            </div>
+                        </div>
+
+                        <!-- Шаг 3: Способ оплаты -->
+                        <div class="form-step" id="step3">
+                            <h3>Способ оплаты</h3>
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <input type="radio" id="payment1" name="payment" value="card" checked>
+                                    <label for="payment1">
+                                        <div class="payment-info">
+                                            <i class="fas fa-credit-card"></i>
+                                            <span class="payment-title">Банковская карта</span>
+                                            <span class="payment-description">Visa, MasterCard, МИР</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="payment-option">
+                                    <input type="radio" id="payment2" name="payment" value="cash">
+                                    <label for="payment2">
+                                        <div class="payment-info">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <span class="payment-title">Наличными при получении</span>
+                                            <span class="payment-description">Оплата курьеру или в пункте выдачи</span>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div class="payment-option">
+                                    <input type="radio" id="payment3" name="payment" value="online">
+                                    <label for="payment3">
+                                        <div class="payment-info">
+                                            <i class="fas fa-wallet"></i>
+                                            <span class="payment-title">Электронные кошельки</span>
+                                            <span class="payment-description">ЮMoney, QIWI, WebMoney</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Промокод -->
+                            <div class="promocode-section">
+                                <h4>Промокод</h4>
+                                <div class="promocode-input">
+                                    <input type="text" id="promocode" placeholder="Введите промокод">
+                                    <button type="button" class="btn btn-secondary" id="applyPromocode">Применить</button>
+                                </div>
+                                <div id="promocodeMessage"></div>
+                            </div>
+
+                            <div class="step-buttons">
+                                <button type="button" class="btn btn-secondary prev-step" data-step="2">Назад</button>
+                                <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Боковая панель с заказом -->
+                <div class="checkout-sidebar">
+                    <div class="order-summary">
                         <h3>Ваш заказ</h3>
                         <div class="order-items" id="orderItems">
                             <!-- Товары будут добавлены через JS -->
                         </div>
-                        <div class="order-total">
-                            <span>Итого:</span>
-                            <span id="orderTotal">0 ₽</span>
+                        
+                        <div class="order-calculations">
+                            <div class="calculation-row">
+                                <span>Товары:</span>
+                                <span id="subtotal">0 ₽</span>
+                            </div>
+                            <div class="calculation-row">
+                                <span>Доставка:</span>
+                                <span id="deliveryCost">0 ₽</span>
+                            </div>
+                            <div class="calculation-row discount" id="discountRow" style="display: none;">
+                                <span>Скидка:</span>
+                                <span id="discountAmount">0 ₽</span>
+                            </div>
+                            <div class="calculation-row total">
+                                <span>Итого:</span>
+                                <span id="orderTotal">0 ₽</span>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-footer">
-                        <p>Нажимая "Подтвердить заказ", вы соглашаетесь с 
-                           <a href="privacy.html" target="_blank">политикой конфиденциальности</a></p>
-                        <button type="submit" class="btn btn-primary">Подтвердить заказ</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </main>
@@ -90,6 +265,7 @@
                         <li><a href="index.html">Главная</a></li>
                         <li><a href="about.html">О компании</a></li>
                         <li><a href="products.html">Товары</a></li>
+                        <li><a href="promotions.html">Акции</a></li>
                         <li><a href="reviews.html">Отзывы</a></li>
                         <li><a href="contacts.html">Контакты</a></li>
                         <li><a href="privacy.html">Политика конфиденциальности</a></li>
@@ -97,9 +273,9 @@
                 </div>
                 <div class="footer-contacts">
                     <h3>Контакты</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кунигами, 15</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, Кремль, Красная площадь, 1</p>
                     <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
-                    <p><i class="fas fa-envelope"></i> info@geg.ru</p>
+                    <p><i class="fas fa-envelope"></i> info@gametech.ru</p>
                 </div>
                 <div class="footer-social">
                     <h3>Мы в соцсетях</h3>
@@ -114,6 +290,7 @@
         </div>
     </footer>
 
+    <script src="script.js"></script>
     <script src="checkout.js"></script>
 </body>
 </html>

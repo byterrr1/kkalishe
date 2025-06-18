@@ -18,3 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.reset();
     });
 });
+// После успешного оформления заказа
+function saveOrder(orderData) {
+    const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    orders.push({
+        id: Date.now(),
+        date: new Date().toLocaleDateString('ru-RU'),
+        items: orderData.items,
+        total: orderData.total
+    });
+    localStorage.setItem('userOrders', JSON.stringify(orders));
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции и скидки - GEG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Кнопка для слабовидящих -->
+    <div class="accessibility-btn" id="accessibilityBtn">
+        <i class="fas fa-eye"></i>
+    </div>
+    
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="site-title">GEG</h1>
+            </div>
+            
+            <div class="search-cart">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск товаров..." id="searchInput">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart">
+                    <a href="products.html"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                </div>
+                <div class="user-account">
+                    <a href="account.html" class="account-link">
+                        <i class="fas fa-user"></i> Личный кабинет
+                    </a>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О компании</a></li>
+                    <li><a href="products.html">Товары</a></li>
+                    <li><a href="promotions.html" class="active">Акции</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <div class="burger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер акций -->
+    <section class="promotions-hero">
+        <div class="container">
+            <div class="promotions-hero-content">
+                <h1 class="animate-slidein">🔥 Горячие акции и скидки!</h1>
+                <p class="animate-slidein">Успейте купить игровую периферию по лучшим ценам</p>
+                <div class="promotions-stats animate-slidein">
+                    <div class="stat-item">
+                        <span class="stat-number">50%</span>
+                        <span class="stat-label">Максимальная скидка</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Часа до конца акции</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Товаров со скидкой</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Текущие акции -->
+    <section class="promotions-section">
+        <div class="container">
+            <h2 class="section-title animate-slidein">Текущие акции</h2>
+            
+            <div class="promotions-grid">
+                <!-- Акция 1 -->
+                <div class="promotion-card animate-card">
+                    <div class="promotion-badge">-30%</div>
+                    <div class="promotion-image">
+                        <img src="img/razer.jpg" alt="Razer BlackWidow V3">
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Скидка на клавиатуры Razer</h3>
+                        <p>Все механические клавиатуры Razer со скидкой до 30%</p>
+                        <div class="promotion-details">
+                            <span class="promotion-price">
+                                <span class="old-price">12 990 ₽</span>
+                                <span class="new-price">8 990 ₽</span>
+                            </span>
+                            <span class="promotion-timer">До 31.12.2024</span>
+                        </div>
+                        <a href="products.html?category=keyboards&brand=razer" class="btn btn-primary">Перейти к акции</a>
+                    </div>
+                </div>
+
+                <!-- Акция 2 -->
+                <div class="promotion-card animate-card">
+                    <div class="promotion-badge">-25%</div>
+                    <div class="promotion-image">
+                        <img src="img/logi.jpg" alt="Logitech G Pro Wireless">
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Беспроводные мыши Logitech</h3>
+                        <p>Беспроводные игровые мыши Logitech со скидкой 25%</p>
+                        <div class="promotion-details">
+                            <span class="promotion-price">
+                                <span class="old-price">9 990 ₽</span>
+                                <span class="new-price">7 490 ₽</span>
+                            </span>
+                            <span class="promotion-timer">До 15.01.2025</span>
+                        </div>
+                        <a href="products.html?category=mice&brand=logitech" class="btn btn-primary">Перейти к акции</a>
+                    </div>
+                </div>
+
+                <!-- Акция 3 -->
+                <div class="promotion-card animate-card">
+                    <div class="promotion-badge">-40%</div>
+                    <div class="promotion-image">
+                        <img src="img/hyper.jpg" alt="HyperX Cloud II">
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Гарнитуры HyperX</h3>
+                        <p>Игровые гарнитуры HyperX со скидкой до 40%</p>
+                        <div class="promotion-details">
+                            <span class="promotion-price">
+                                <span class="old-price">7 990 ₽</span>
+                                <span class="new-price">4 790 ₽</span>
+                            </span>
+                            <span class="promotion-timer">До 20.01.2025</span>
+                        </div>
+                        <a href="products.html?category=headsets&brand=hyperx" class="btn btn-primary">Перейти к акции</a>
+                    </div>
+                </div>
+
+                <!-- Акция 4 -->
+                <div class="promotion-card animate-card">
+                    <div class="promotion-badge">-50%</div>
+                    <div class="promotion-image">
+                        <img src="img/steel.jpeg" alt="SteelSeries Apex Pro">
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Мега-скидка на SteelSeries</h3>
+                        <p>Все товары SteelSeries со скидкой до 50%</p>
+                        <div class="promotion-details">
+                            <span class="promotion-price">
+                                <span class="old-price">14 990 ₽</span>
+                                <span class="new-price">7 490 ₽</span>
+                            </span>
+                            <span class="promotion-timer">До 10.01.2025</span>
+                        </div>
+                        <a href="products.html?brand=steelseries" class="btn btn-primary">Перейти к акции</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Промокоды -->
+    <section class="promocodes-section">
+        <div class="container">
+            <h2 class="section-title animate-slidein">Промокоды</h2>
+            
+            <div class="promocodes-grid">
+                <div class="promocode-card animate-card">
+                    <div class="promocode-header">
+                        <h3>WELCOME10</h3>
+                        <span class="promocode-discount">-10%</span>
+                    </div>
+                    <p>Скидка 10% на первый заказ</p>
+                    <div class="promocode-details">
+                        <span class="promocode-validity">Действует до 31.12.2024</span>
+                        <button class="btn btn-secondary copy-promocode" data-code="WELCOME10">Скопировать</button>
+                    </div>
+                </div>
+
+                <div class="promocode-card animate-card">
+                    <div class="promocode-header">
+                        <h3>GAMER20</h3>
+                        <span class="promocode-discount">-20%</span>
+                    </div>
+                    <p>Скидка 20% на игровую периферию</p>
+                    <div class="promocode-details">
+                        <span class="promocode-validity">Действует до 15.01.2025</span>
+                        <button class="btn btn-secondary copy-promocode" data-code="GAMER20">Скопировать</button>
+                    </div>
+                </div>
+
+                <div class="promocode-card animate-card">
+                    <div class="promocode-header">
+                        <h3>FREESHIP</h3>
+                        <span class="promocode-discount">Бесплатная доставка</span>
+                    </div>
+                    <p>Бесплатная доставка при заказе от 5000 ₽</p>
+                    <div class="promocode-details">
+                        <span class="promocode-validity">Действует до 31.01.2025</span>
+                        <button class="btn btn-secondary copy-promocode" data-code="FREESHIP">Скопировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container2">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                </div>
+                <div class="footer-links">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="products.html">Товары</a></li>
+                        <li><a href="promotions.html">Акции</a></li>
+                        <li><a href="reviews.html">Отзывы</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Москва, Кремль, Красная площадь, 1</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@gametech.ru</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-vk"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-telegram"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-youtube"></i></a>
+                        <a href="https://vk.com/serega_pirat?from=groups"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="promotions.js"></script>
+</body>
+</html> 

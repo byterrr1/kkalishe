@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест функциональности - GEG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container" style="padding: 50px 0;">
+        <h1>Тест функциональности GEG</h1>
+        
+        <div style="background: white; padding: 30px; border-radius: 10px; margin: 20px 0;">
+            <h2>Проверка localStorage</h2>
+            <button onclick="checkLocalStorage()" class="btn btn-primary">Проверить данные</button>
+            <button onclick="clearLocalStorage()" class="btn btn-secondary">Очистить данные</button>
+            <div id="localStorageInfo" style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 5px;"></div>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 10px; margin: 20px 0;">
+            <h2>Тестовые данные</h2>
+            <button onclick="addTestData()" class="btn btn-primary">Добавить тестовые данные</button>
+            <button onclick="addTestOrder()" class="btn btn-secondary">Добавить тестовый заказ</button>
+        </div>
+        
+        <div style="background: white; padding: 30px; border-radius: 10px; margin: 20px 0;">
+            <h2>Навигация</h2>
+            <a href="index.html" class="btn btn-primary">Главная</a>
+            <a href="products.html" class="btn btn-secondary">Товары</a>
+            <a href="checkout.html" class="btn btn-primary">Оформление заказа</a>
+            <a href="account.html" class="btn btn-secondary">Личный кабинет</a>
+            <a href="thankyou.html" class="btn btn-primary">Страница благодарности</a>
+        </div>
+    </div>
+
+    <script>
+        function checkLocalStorage() {
+            const userData = JSON.parse(localStorage.getItem('userData')) || {};
+            const userOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const lastOrder = JSON.parse(localStorage.getItem('lastOrder')) || {};
+            
+            const info = document.getElementById('localStorageInfo');
+            info.innerHTML = `
+                <h3>Данные пользователя:</h3>
+                <pre>${JSON.stringify(userData, null, 2)}</pre>
+                
+                <h3>История заказов (${userOrders.length}):</h3>
+                <pre>${JSON.stringify(userOrders, null, 2)}</pre>
+                
+                <h3>Корзина (${cart.length} товаров):</h3>
+                <pre>${JSON.stringify(cart, null, 2)}</pre>
+                
+                <h3>Последний заказ:</h3>
+                <pre>${JSON.stringify(lastOrder, null, 2)}</pre>
+            `;
+        }
+        
+        function clearLocalStorage() {
+            localStorage.clear();
+            alert('Все данные очищены!');
+            checkLocalStorage();
+        }
+        
+        function addTestData() {
+            const testUserData = {
+                name: 'Иван Иванов',
+                email: 'ivan@test.com',
+                phone: '+7 (999) 123-45-67'
+            };
+            
+            const testCart = [
+                {
+                    id: 1,
+                    name: 'Тестовый товар 1',
+                    price: 1500,
+                    quantity: 2,
+                    image: 'img/klava.jpg'
+                },
+                {
+                    id: 2,
+                    name: 'Тестовый товар 2',
+                    price: 2500,
+                    quantity: 1,
+                    image: 'img/mish.jpg'
+                }
+            ];
+            
+            localStorage.setItem('userData', JSON.stringify(testUserData));
+            localStorage.setItem('cart', JSON.stringify(testCart));
+            
+            alert('Тестовые данные добавлены!');
+            checkLocalStorage();
+        }
+        
+        function addTestOrder() {
+            const testOrder = {
+                id: Date.now(),
+                date: new Date().toLocaleDateString('ru-RU'),
+                customer: {
+                    name: 'Иван Иванов',
+                    phone: '+7 (999) 123-45-67',
+                    email: 'ivan@test.com',
+                    address: 'Москва, ул. Тестовая, 1'
+                },
+                items: [
+                    {
+                        id: 1,
+                        name: 'Тестовый товар 1',
+                        price: 1500,
+                        quantity: 2,
+                        image: 'img/klava.jpg'
+                    }
+                ],
+                total: 3000,
+                comment: 'Тестовый заказ',
+                status: 'Оформлен'
+            };
+            
+            const userOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            userOrders.push(testOrder);
+            localStorage.setItem('userOrders', JSON.stringify(userOrders));
+            localStorage.setItem('lastOrder', JSON.stringify(testOrder));
+            
+            alert('Тестовый заказ добавлен!');
+            checkLocalStorage();
+        }
+        
+        // Автоматически проверяем данные при загрузке
+        checkLocalStorage();
+    </script>
+</body>
+</html> 

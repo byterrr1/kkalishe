@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEG - Магазин игровой периферии</title>
+    <title>Личный кабинет - GEG</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Кнопка для слабовидящих -->
+    <!-- Шапка сайта (как на других страницах) -->
+        <!-- Кнопка для слабовидящих -->
     <div class="accessibility-btn" id="accessibilityBtn">
         <i class="fas fa-eye"></i>
     </div>
@@ -37,7 +38,7 @@
             
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="index.html">Главная</a></li>
                     <li><a href="about.html">О компании</a></li>
                     <li><a href="products.html">Товары</a></li>
                     <li><a href="promotions.html">Акции</a></li>
@@ -51,91 +52,48 @@
         </div>
     </header>
 
-    <!-- Главный баннер -->
-    <section class="hero">
+    <main class="account-page">
         <div class="container">
-            <div class="hero-content animate-fadein">
-                <h2>Лучшая игровая периферия</h2>
-                <p>Мы предлагаем только качественные товары от проверенных производителей</p>
-                <a href="products.html" class="btn btn-primary animate-bounce">В каталог</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Баннер акций -->
-    <section class="promo-banner">
-        <div class="container">
-            <div class="promo-content">
-                <div class="promo-text">
-                    <h2>🔥 Горячие акции!</h2>
-                    <p>Скидки до 50% на игровую периферию</p>
-                    <div class="promo-timer">
-                        <span>До конца акции: <span id="promoTimer">24:00:00</span></span>
+            <h1 class="page-title">Личный кабинет</h1>
+            
+            <div class="account-container">
+                <!-- Блок с персональными данными -->
+                <section class="account-section personal-info">
+                    <h2>Персональные данные</h2>
+                    <form id="personalDataForm" class="account-form">
+                        <div class="form-group">
+                            <label for="userName">ФИО</label>
+                            <input type="text" id="userName" placeholder="Введите ваше ФИО">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" placeholder="Введите ваш email">
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Телефон</label>
+                            <input type="tel" id="userPhone" placeholder="Введите ваш телефон">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                    </form>
+                </section>
+                
+                <!-- Блок с историей заказов -->
+                <section class="account-section order-history">
+                    <h2>История заказов</h2>
+                    <div class="orders-list" id="ordersList">
+                        <!-- Заказы будут загружаться через JS -->
+                        <div class="no-orders">
+                            <i class="fas fa-box-open"></i>
+                            <p>У вас пока нет заказов</p>
+                            <a href="products.html" class="btn btn-secondary">Перейти в каталог</a>
+                        </div>
                     </div>
-                </div>
-                <div class="promo-action">
-                    <a href="promotions.html" class="btn btn-primary">Смотреть все акции</a>
-                </div>
+                </section>
             </div>
         </div>
-    </section>
-
-    <!-- Популярные категории -->
-    <section class="categories">
-        <div class="container">
-            <h2 class="section-title">Популярные категории</h2>
-            <div class="category-grid">
-                <div class="category-card animate-card">
-                    <img src="img/klava.jpg" alt="Клавиатуры">
-                    <h3>Клавиатуры</h3>
-                    <a href="products.html?category=keyboards" class="btn btn-secondary">Смотреть</a>
-                </div>
-                <div class="category-card animate-card">
-                    <img src="img/mish.jpg" alt="Мыши">
-                    <h3>Мыши</h3>
-                    <a href="products.html?category=mice" class="btn btn-secondary">Смотреть</a>
-                </div>
-                <div class="category-card animate-card">
-                    <img src="img/ushi.jpg" alt="Гарнитуры">
-                    <h3>Гарнитуры</h3>
-                    <a href="products.html?category=headsets" class="btn btn-secondary">Смотреть</a>
-                </div>
-                <div class="category-card animate-card">
-                    <img src="img/gay.jpg" alt="Контроллеры">
-                    <h3>Контроллеры</h3>
-                    <a href="products.html?category=controllers" class="btn btn-secondary">Смотреть</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Популярные товары -->
-    <section class="featured-products">
-        <div class="container">
-            <h2 class="section-title">Хиты продаж</h2>
-            <div class="product-grid">
-                <!-- Товары будут загружаться через JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- О компании (кратко) -->
-    <section class="about-preview">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text animate-slidein-left">
-                    <h2>О компании GEG</h2>
-                    <p>Мы - ведущий поставщик игровой периферии в России с 2010 года. Наша миссия - предоставлять геймерам лучшее оборудование для максимального погружения в игровой процесс.</p>
-                    <a href="about.html" class="btn btn-primary">Подробнее</a>
-                </div>
-                <div class="about-image animate-slidein-right">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал сайта -->
-    <footer class="footer">
+    </main>
+    
+        <footer class="footer">
         <div class="container2">
             <div class="footer-grid">
                 <div class="footer-logo">
@@ -190,5 +148,7 @@
     </div>
 </div>
     <script src="script.js"></script>
+    
+    <script src="account.js"></script>
 </body>
 </html>

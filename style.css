@@ -1247,178 +1247,6 @@ ul {
     padding: 20px;
 }
 
-.cart-item {
-    display: flex;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f5f5f5;
-    gap: 15px;
-}
-
-.cart-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-.cart-item-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.cart-item-title {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.cart-item-price {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.quantity-btn {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.quantity-input {
-    width: 40px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    padding: 5px;
-}
-
-.remove-item {
-    background: none;
-    border: none;
-    color: var(--danger-color);
-    cursor: pointer;
-    font-size: 14px;
-    margin-left: auto;
-}
-
-.cart-summary {
-    padding: 20px;
-    border-top: 1px solid #eee;
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.checkout-btn {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-}
-
-/* Адаптивность */
-@media (max-width: 576px) {
-    .cart-modal-content {
-        max-width: 100%;
-    }
-    
-    .cart-item {
-        flex-direction: column;
-    }
-    
-    .cart-item-img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
-    }
-}
-/* Стили модального окна корзины */
-.cart-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2000;
-    overflow-y: auto;
-}
-
-.cart-modal-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    max-width: 500px;
-    height: 100%;
-    background-color: white;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    animation: slideInRight 0.3s forwards;
-    display: flex;
-    flex-direction: column;
-}
-
-@keyframes slideInRight {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-}
-
-.cart-header {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cart-header h3 {
-    margin: 0;
-    font-size: 24px;
-    color: var(--primary-color);
-}
-
-.close-cart {
-    font-size: 28px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.close-cart:hover {
-    transform: rotate(90deg);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-}
-
 .empty-cart {
     text-align: center;
     padding: 40px 0;
@@ -1439,10 +1267,12 @@ ul {
 }
 
 .cart-item-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 5px;
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+    border-radius: 5px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
 }
 
 .cart-item-details {
@@ -1519,7 +1349,7 @@ ul {
     font-size: 16px;
 }
 
-/* Адаптивность */
+/* Адаптивность корзины */
 @media (max-width: 576px) {
     .cart-modal-content {
         max-width: 100%;
@@ -1530,201 +1360,760 @@ ul {
     }
     
     .cart-item-img {
-        width: 100%;
-        height: auto;
-        max-height: 150px;
+        width: 60px !important;
+        height: 60px !important;
+        max-height: 60px !important;
+        max-width: 60px !important;
     }
 }
-/* Стиль для секретного товара */
+
+/* Стили для страницы благодарности */
+.thankyou-page {
+    padding: 60px 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.thankyou-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.thankyou-icon {
+    font-size: 80px;
+    color: var(--success-color);
+    margin-bottom: 20px;
+    animation: bounce 1s ease-in-out;
+}
+
+.thankyou-content h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.thankyou-content p {
+    font-size: 1.1em;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.order-details {
+    margin: 30px 0;
+    text-align: left;
+}
+
+.order-summary {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.order-summary h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.order-info {
+    margin-bottom: 20px;
+}
+
+.order-info p {
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.order-items-summary {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.order-items-summary h4 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.order-item-summary {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item-summary:last-child {
+    border-bottom: none;
+}
+
+.item-thumbnail {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover !important;
+    border-radius: 5px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.item-quantity {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.thankyou-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.thankyou-actions .btn {
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .thankyou-content {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .thankyou-content h1 {
+        font-size: 2em;
+    }
+    
+    .thankyou-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .thankyou-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Дополнительные стили для личного кабинета */
+.no-orders {
+    text-align: center;
+    padding: 40px 0;
+    color: #666;
+}
+
+.no-orders i {
+    font-size: 50px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.no-orders p {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+    .account-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Стили для страницы личного кабинета */
+.account-page {
+    padding: 40px 0;
+    min-height: 70vh;
+}
+
+.account-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.account-section {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.account-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.account-form .form-group {
+    margin-bottom: 20px;
+}
+
+.account-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.account-form input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Стили для истории заказов */
+.orders-list {
+    margin-top: 20px;
+}
+
+/* Стили для кнопки личного кабинета */
+.user-account {
+    margin-left: 20px;
+}
+
+.account-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--dark-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.account-link:hover {
+    color: var(--primary-color);
+}
+
+.account-link i {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .user-account {
+        margin-left: 15px;
+        order: 3;
+    }
+}
+
+/* Стили для секретных товаров */
 .product-card.secret-item {
     position: relative;
-    border: 2px solid gold;
+    transition: transform 0.3s;
+}
+
+.product-card.secret-item:hover {
+    transform: translateY(-5px);
 }
 
 .product-card.secret-item::after {
     content: 'ЭКСКЛЮЗИВ';
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background: gold;
     color: #000;
     padding: 3px 10px;
     font-weight: bold;
     border-radius: 3px;
     font-size: 12px;
-    max-width: 80%; /* или любое значение, чтобы изображение было меньше квадрата */
-    max-height: 80%;
-    height: auto;
-    width: auto;
-}
-.secret-item {
-    position: relative;
-    border: 2px solid gold;
-}
-.secret-item::after {
-    content: 'ЭКСКЛЮЗИВ';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: gold;
-    color: #000;
-    padding: 3px 10px;
-    font-weight: bold;
-    border-radius: 3px;
-    font-size: 12px;
-    max-width: 80%; /* или любое значение, чтобы изображение было меньше квадрата */
-    max-height: 80%;
-    height: auto;
-    width: auto;
-}
-/* Стили формы заказа (для всех страниц) */
-.order-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 3000;
-    overflow-y: auto;
+    z-index: 2;
 }
 
-.order-modal-content {
-    position: relative;
-    max-width: 700px;
-    margin: 50px auto;
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    animation: modalFadeIn 0.3s;
+/* Стили для страницы оформления заказа */
+.checkout-page {
+    padding: 40px 0;
+    min-height: 70vh;
 }
 
-.order-header {
+.checkout-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.checkout-steps {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
 }
 
-.order-form {
+.step {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.step.active .step-number {
+    background: var(--primary-color);
+}
+
+.step-text {
+    font-size: 0.9em;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.checkout-form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-step h3 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
+    color: var(--dark-color);
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #e74c3c;
+}
+
+/* Стили для опций доставки */
+.delivery-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.delivery-option {
+    position: relative;
+}
+
+.delivery-option input[type="radio"] {
+    display: none;
+}
+
+.delivery-option label {
+    display: block;
+    cursor: pointer;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.delivery-option input[type="radio"]:checked + label {
+    border-color: var(--primary-color);
+    background: #f8f9ff;
+}
+
+.delivery-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.delivery-header i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.delivery-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    flex: 1;
+}
+
+.delivery-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+.delivery-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.delivery-time {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.delivery-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Стили для опций оплаты */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.payment-option {
+    position: relative;
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-option label {
+    display: block;
+    cursor: pointer;
+    border: 2px solid #e1e5e9;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.payment-option input[type="radio"]:checked + label {
+    border-color: var(--primary-color);
+    background: #f8f9ff;
+}
+
+.payment-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-info i {
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.payment-title {
+    font-weight: 600;
+    font-size: 1.1em;
+    flex: 1;
+}
+
+.payment-description {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Стили для промокода */
+.promocode-section {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.promocode-section h4 {
+    margin-bottom: 15px;
+    color: var(--dark-color);
+}
+
+.promocode-input {
+    display: flex;
+    gap: 10px;
+}
+
+.promocode-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.promocode-input button {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+#promocodeMessage {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+#promocodeMessage.success {
+    color: var(--success-color);
+}
+
+#promocodeMessage.error {
+    color: #e74c3c;
+}
+
+/* Кнопки навигации по шагам */
+.step-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.step-buttons .btn {
+    padding: 12px 25px;
+    min-width: 120px;
+}
+
+/* Боковая панель с заказом */
+.checkout-sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
 }
 
 .order-summary {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 5px;
-}
-
-.order-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.order-total {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Стили модалки товара (ТОЛЬКО для products.html) */
-.product-modal {
-    display: none;
-    /* ... (остальные стили из предыдущего ответа) ... */
-}
-/* Страница оформления заказа */
-.checkout-page {
-    padding: 40px 0;
-}
-
-.checkout-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.form-section {
     background: white;
+    border-radius: 15px;
     padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.order-summary h3 {
+    color: var(--primary-color);
     margin-bottom: 20px;
+    font-size: 1.3em;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+}
+
+.order-items {
+    margin-bottom: 25px;
 }
 
 .order-item {
     display: flex;
-    justify-content: space-between;
+    gap: 15px;
     padding: 15px 0;
     border-bottom: 1px solid #eee;
 }
 
-.item-info {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+.order-item:last-child {
+    border-bottom: none;
 }
 
-.item-image {
-    width: 60px;
-    height: 60px;
+.order-item .item-image {
+    width: 50px;
+    height: 50px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
-.order-total {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-    padding-top: 15px;
+.item-details {
+    flex: 1;
+}
+
+.item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.item-quantity {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.order-calculations {
     border-top: 2px solid #eee;
+    padding-top: 20px;
+}
+
+.calculation-row {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1em;
 }
 
-.form-footer {
-    margin-top: 30px;
-    text-align: center;
-}
-
-/* Страница политики */
-.privacy-page {
-    padding: 40px 0;
-    line-height: 1.6;
-}
-
-.privacy-content section {
-    margin-bottom: 30px;
-}
-
-.privacy-content h3 {
+.calculation-row.total {
+    font-size: 1.2em;
+    font-weight: bold;
     color: var(--primary-color);
-    margin-bottom: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
 }
-/* Модальное окно картины */
+
+.calculation-row.discount {
+    color: var(--success-color);
+}
+
+.empty-cart {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Адаптивность для checkout */
+@media (max-width: 992px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .checkout-sidebar {
+        position: static;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .checkout-steps {
+        gap: 15px;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+    
+    .step-text {
+        font-size: 0.8em;
+    }
+    
+    .checkout-form-container {
+        padding: 20px;
+    }
+    
+    .delivery-header,
+    .payment-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .delivery-price {
+        align-self: flex-end;
+    }
+    
+    .promocode-input {
+        flex-direction: column;
+    }
+    
+    .step-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .checkout-page {
+        padding: 20px 0;
+    }
+    
+    .checkout-steps {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .step {
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
+/* Стили для модального окна картины */
 .art-modal {
     display: none;
     position: fixed;
@@ -1757,24 +2146,33 @@ ul {
     font-size: 40px;
     cursor: pointer;
     z-index: 1;
+    background: none;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.close-art-modal:hover {
+    transform: rotate(90deg);
 }
 
 .art-modal-body {
     display: flex;
     flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 #artModalImage {
     width: 100%;
     max-height: 70vh;
     object-fit: contain;
-    border-radius: 5px;
+    border-radius: 10px 10px 0 0;
 }
 
 .art-modal-info {
-    background: white;
     padding: 25px;
-    border-radius: 0 0 8px 8px;
+    background: white;
 }
 
 .art-modal-info h3 {
@@ -1790,7 +2188,19 @@ ul {
     margin-bottom: 15px;
 }
 
-/* Адаптивность */
+.art-modal-info p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.art-modal-info .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+/* Адаптивность для модального окна картины */
 @media (max-width: 768px) {
     .art-modal-content {
         width: 95%;
@@ -1800,31 +2210,482 @@ ul {
     .art-modal-body {
         flex-direction: column;
     }
-    
+
     #artModalImage {
         max-height: 50vh;
     }
+
+    .close-art-modal {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+    }
 }
-/* Стили для секретных товаров */
-.product-card.secret-item {
+
+.modal-hint {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 15px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Стили для изображений в личном кабинете */
+.order-item-img {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: cover !important;
+    border-radius: 5px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+}
+
+/* Стили для изображений в checkout */
+.item-image {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 5px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+}
+
+/* Стили для страницы акций */
+.promotions-hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.promotions-hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.promotions-hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.promotions-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.promotions-section {
+    padding: 60px 0;
+}
+
+.promotions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.promotion-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    transition: transform 0.3s;
 }
 
-.product-card.secret-item:hover {
-    transform: translateY(-5px);
+.promotion-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.product-card.secret-item::after {
-    content: 'ЭКСКЛЮЗИВ';
+.promotion-badge {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: gold;
-    color: #000;
-    padding: 3px 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-weight: bold;
-    border-radius: 3px;
-    font-size: 12px;
+    font-size: 1.1em;
     z-index: 2;
+}
+
+.promotion-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.promotion-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.promotion-card:hover .promotion-image img {
+    transform: scale(1.1);
+}
+
+.promotion-content {
+    padding: 25px;
+}
+
+.promotion-content h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.promotion-content p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.promotion-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.promotion-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.new-price {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.promotion-timer {
+    background: var(--light-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    color: var(--dark-color);
+}
+
+/* Стили для промокодов */
+.promocodes-section {
+    padding: 60px 0;
+    background: var(--light-color);
+}
+
+.promocodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.promocode-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.promocode-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.promocode-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.promocode-header h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+.promocode-discount {
+    background: var(--success-color);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.promocode-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.promocode-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.promocode-validity {
+    font-size: 0.8em;
+    color: #999;
+}
+
+.copy-promocode {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.copy-promocode:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Адаптивность для акций */
+@media (max-width: 768px) {
+    .promotions-hero-content h1 {
+        font-size: 2.5em;
+    }
+    
+    .promotions-stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 2em;
+    }
+    
+    .promotions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .promocodes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .promotion-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .promocode-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .promotions-hero {
+        padding: 60px 0;
+    }
+    
+    .promotions-hero-content h1 {
+        font-size: 2em;
+    }
+    
+    .promotions-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Стили для баннера акций на главной странице */
+.promo-banner {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 30px 0;
+    margin: 40px 0;
+}
+
+.promo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.promo-text h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.promo-text p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.promo-timer {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.promo-timer span {
+    font-weight: bold;
+    color: #ffeaa7;
+}
+
+.promo-action .btn {
+    background: white;
+    color: #ff6b6b;
+    border: 2px solid white;
+    font-weight: bold;
+    padding: 12px 25px;
+    transition: all 0.3s ease;
+}
+
+.promo-action .btn:hover {
+    background: transparent;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .promo-content {
+        text-align: center;
+        flex-direction: column;
+    }
+    
+    .promo-text h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Стили для остатков товаров */
+.product-stock {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin: 8px 0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.product-stock.in-stock {
+    background: var(--success-color);
+    color: white;
+}
+
+.product-stock.low-stock {
+    background: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.product-stock.out-of-stock {
+    background: var(--danger-color);
+    color: white;
+}
+
+.add-to-cart:disabled {
+    background: #ccc !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.add-to-cart:disabled:hover {
+    background: #ccc !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Кнопка "Наверх" */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* Промо карточки */
+.promo-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.promo-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--danger-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Стили для страницы политики */
+.privacy-page {
+    padding: 40px 0;
+    line-height: 1.6;
+}
+
+.privacy-content section {
+    margin-bottom: 30px;
+}
+
+.privacy-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
