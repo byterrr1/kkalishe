@@ -52,10 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Функции корзины
     function addToCart(product) {
         const existingItem = cart.find(item => item.id === product.id);
-        
+        const discountedPrice = getDiscountedPrice(product.price);
         if (existingItem) {
             if (existingItem.quantity < product.stock) {
                 existingItem.quantity += 1;
+                product.stock -= 1;
             } else {
                 alert('Извините, товар закончился на складе!');
                 return;
@@ -65,22 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 cart.push({
                     id: product.id,
                     name: product.name,
-                    price: product.price,
+                    price: discountedPrice,
                     image: product.image,
                     quantity: 1,
                     stock: product.stock
                 });
+                product.stock -= 1;
             } else {
                 alert('Извините, товар закончился на складе!');
                 return;
             }
         }
-        
         updateCartCount();
         saveCart();
-        
-        // Показываем уведомление
         showNotification(`${product.name} добавлен в корзину!`);
+        displayProducts();
     }
 
     function updateCartCount() {
@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             total += itemTotal;
+            let priceHTML = '';
+            if (getDiscountedPrice(item.price / 0.9) < item.price / 0.9) {
+                priceHTML = `<span class="old-price">${Math.round(item.price / 0.9).toLocaleString()} ₽</span> <span class="new-price">${item.price.toLocaleString()} ₽</span>`;
+            } else {
+                priceHTML = `${item.price.toLocaleString()} ₽`;
+            }
 
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
@@ -117,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${item.image}" alt="${item.name}" class="cart-item-img">
                 <div class="cart-item-details">
                     <h4 class="cart-item-title">${item.name}</h4>
-                    <div class="cart-item-price">${item.price.toLocaleString()} ₽</div>
+                    <div class="cart-item-price">${priceHTML}</div>
                     <div class="cart-item-controls">
                         <div class="quantity-control">
                             <button class="quantity-btn minus" data-index="${index}">-</button>
@@ -320,6 +326,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     stockClass = 'in-stock';
                 }
                 
+                const discountedPrice = getDiscountedPrice(product.price);
+                let priceHTML = '';
+                if (discountedPrice < product.price) {
+                    priceHTML = `<span class="old-price">${product.price.toLocaleString()} ₽</span> <span class="new-price">${discountedPrice.toLocaleString()} ₽</span>`;
+                } else {
+                    priceHTML = `${product.price.toLocaleString()} ₽`;
+                }
+                
                 const productCard = document.createElement('div');
                 productCard.className = `product-card ${isSecret ? 'secret-item' : ''}`;
                 productCard.innerHTML = `
@@ -328,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
-                        <div class="product-price">${product.price.toLocaleString()} ₽</div>
+                        <div class="product-price">${priceHTML}</div>
                         <div class="product-rating">${stars} (${product.rating})</div>
                         <div class="product-stock ${stockClass}">${stockStatus}</div>
                         <p class="product-description">${product.description}</p>
@@ -434,7 +448,8 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImg.src = product.image;
             modalImg.alt = product.name;
             modalTitle.textContent = product.name;
-            modalPrice.textContent = `${product.price.toLocaleString()} ₽`;
+            const discountedPrice = getDiscountedPrice(product.price);
+            modalPrice.textContent = `${discountedPrice.toLocaleString()} ₽`;
             modalDesc.textContent = product.description;
             
             // Обновляем data-id для кнопки добавления
@@ -561,10 +576,12 @@ function showNotification(message, type = 'info') {
 window.addToCart = function(product) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingItem = cart.find(item => item.id === product.id);
+    const discountedPrice = getDiscountedPrice(product.price);
     
     if (existingItem) {
         if (existingItem.quantity < product.stock) {
             existingItem.quantity += 1;
+            product.stock -= 1;
         } else {
             alert('Извините, товар закончился на складе!');
             return;
@@ -574,11 +591,12 @@ window.addToCart = function(product) {
             cart.push({
                 id: product.id,
                 name: product.name,
-                price: product.price,
+                price: discountedPrice,
                 image: product.image,
                 quantity: 1,
                 stock: product.stock
             });
+            product.stock -= 1;
         } else {
             alert('Извините, товар закончился на складе!');
             return;
@@ -806,3 +824,11 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+function getDiscountedPrice(price) {
+    const promocode = localStorage.getItem('appliedPromocode');
+    if (promocode === 'WELCOME10') {
+        return Math.round(price * 0.9);
+    }
+    return price;
+}

@@ -310,6 +310,14 @@ function saveOrder(orderData) {
     orders.push(orderData);
     localStorage.setItem('orders', JSON.stringify(orders));
     
+    // Также сохраняем заказ в userOrders для истории в личном кабинете
+    let userOrders = JSON.parse(localStorage.getItem('userOrders')) || [];
+    userOrders.push(orderData);
+    localStorage.setItem('userOrders', JSON.stringify(userOrders));
+    
+    // Сохраняем последний заказ для страницы благодарности
+    localStorage.setItem('lastOrder', JSON.stringify(orderData));
+    
     // Сохраняем данные пользователя
     const userData = {
         fullName: orderData.fullName,
