@@ -380,3 +380,38 @@ function updatePromoTimer() {
         timerElement.textContent = '00:00:00';
     }
 }
+
+// === Счетчик посещений ===
+(function() {
+    // Проверяем, был ли уже засчитан визит в этой сессии
+    if (!sessionStorage.getItem('siteVisitedThisSession')) {
+        // Получаем текущее значение счетчика из localStorage
+        let visits = localStorage.getItem('siteVisits');
+        if (!visits) {
+            visits = 1;
+        } else {
+            visits = parseInt(visits, 10) + 1;
+        }
+        localStorage.setItem('siteVisits', visits);
+        sessionStorage.setItem('siteVisitedThisSession', '1');
+    }
+    // Показываем счетчик (берём актуальное значение из localStorage)
+    const visits = localStorage.getItem('siteVisits') || 1;
+    const counterDiv = document.createElement('div');
+    counterDiv.id = 'visitor-counter';
+    counterDiv.textContent = `Вы посетили этот сайт ${visits} раз(а)`;
+    counterDiv.style.cssText = `
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 15px;
+        z-index: 9999;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        pointer-events: none;
+    `;
+    document.body.appendChild(counterDiv);
+})();
